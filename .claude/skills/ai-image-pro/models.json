@@ -1,0 +1,53 @@
+{
+  "updated": "2026-11-22",
+  "default_model": "gpt-image-2",
+  "default_provider": "kie",
+  "kie": {
+    "verified": false,
+    "note": "Endpoints and slugs written from memory; docs.kie.ai was unreachable when this file was created. Check https://kie.ai/market and fix here if you get 404/422.",
+    "api_base": "https://api.kie.ai",
+    "create_task": "/api/v1/jobs/createTask",
+    "record_info": "/api/v1/jobs/recordInfo",
+    "upload_base64": "https://kieai.redpandaai.co/api/file-base64-upload",
+    "poll_seconds": 5,
+    "timeout_seconds": 600,
+    "models": {
+      "gpt-image-2": {
+        "slug": "gpt-image-2-text-to-image",
+        "edit_slug": "gpt-image-2-image-to-image",
+        "image_field": "input_urls",
+        "aspect_field": "aspect_ratio",
+        "resolution_field": "resolution",
+        "extra": {}
+      },
+      "nano-banana-pro": {
+        "slug": "nano-banana-pro",
+        "edit_slug": "nano-banana-pro",
+        "image_field": "image_input",
+        "aspect_field": "aspect_ratio",
+        "resolution_field": "resolution",
+        "extra": {"output_format": "png"}
+      },
+      "nano-banana-2-lite": {
+        "slug": "google/nano-banana",
+        "edit_slug": "google/nano-banana-edit",
+        "image_field": "image_urls",
+        "aspect_field": "image_size",
+        "resolution_field": null,
+        "extra": {"output_format": "png"}
+      }
+    }
+  },
+  "gemini": {
+    "verified": true,
+    "api_base": "https://generativelanguage.googleapis.com/v1beta",
+    "models": {
+      "nano-banana-pro": {"id": "gemini-3-pro-image-preview", "supports_image_size": true},
+      "nano-banana-2-lite": {"id": "gemini-2.5-flash-image", "supports_image_size": false}
+    }
+  },
+  "fallback_model": {
+    "gemini": {"gpt-image-2": "nano-banana-pro"},
+    "kie": {}
+  }
+}
